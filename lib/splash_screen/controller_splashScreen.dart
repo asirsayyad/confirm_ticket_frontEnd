@@ -1,4 +1,5 @@
 import 'package:confirmticket/first_screen/first_screen.dart';
+import 'package:confirmticket/first_welcome_screen/first_welcome_screen.dart';
 import 'package:confirmticket/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,7 @@ class ControllerSplash extends GetxController{
 
   void delay(){
     Future.delayed(Duration(seconds : 3 ) , (){
-      Get.off(FirstScreen());
+      Get.off(FirstWelcomeScreen());
 
     });
   }

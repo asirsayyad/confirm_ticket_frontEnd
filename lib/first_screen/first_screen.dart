@@ -1,7 +1,10 @@
+import 'package:confirmticket/app_barscreen/appbar_screen.dart';
+import 'package:confirmticket/first_welcome_screen/first_welcome_screen.dart';
 import 'package:confirmticket/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Train_Availability_Screen/train_availabilityscreen.dart';
 import 'controller_firstscreen.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -9,18 +12,11 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Controller_firstscreen controllerfirst = Get.put(Controller_firstscreen());
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.network(
-          "assets/logo.png",
-          height: 150, // Reduce this value to shrink the image
-          fit: BoxFit.contain,
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
 
+    Controller_firstscreen controllerfirst = Get.put(Controller_firstscreen());
+    Appbar_Screen appbar_screen=Get.put(Appbar_Screen());
+    return Scaffold(
+      appBar: appbar_screen.appbarmethod(),
       body: Column(
         children: [
           Padding(
@@ -28,8 +24,9 @@ class FirstScreen extends StatelessWidget {
             child: TextField(
               controller: controllerfirst.Textfieldfirstfromfirstscreen,
               decoration: InputDecoration(
+                icon: Icon(Icons.train),
                 label: Text("Enter From"),
-                border: OutlineInputBorder(),
+                border: UnderlineInputBorder(),
               ),
             ),
           ),
@@ -38,8 +35,9 @@ class FirstScreen extends StatelessWidget {
             child: TextField(
               controller: controllerfirst.Textfieldsecondfromfirstscreen,
               decoration: InputDecoration(
+                icon: Icon(Icons.train),
                 label: Text("Enter To"),
-                border: OutlineInputBorder(),
+                border: UnderlineInputBorder(),
               ),
             ),
           ),
@@ -57,11 +55,7 @@ class FirstScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               controllerfirst.notification();
-              if (controllerfirst.Textfieldfirstfromfirstscreen.text.trim() != null &&
-                  controllerfirst.Textfieldsecondfromfirstscreen.text.trim() !=null &&
-                  controllerfirst.rxdate.value!= "Select Date") {
-                Get.to(SplashScreen());
-              }
+
             },
             child: Text("Search"),
           ),
