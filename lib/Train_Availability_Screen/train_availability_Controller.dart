@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-/// Simple Train model
 class Train {
   final String number;
   final String name;
@@ -15,7 +14,6 @@ class Train {
   });
 }
 
-/// Controller to handle logic
 class SecondScreenController extends GetxController {
   final String fromStation;
   final String toStation;
@@ -25,40 +23,33 @@ class SecondScreenController extends GetxController {
     required this.toStation,
   });
 
-  // List of trains (reactive)
   var trainList = <Train>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    loadTrains(); // Load when screen opens
+    loadTrains(); // 🔁 Call this to load dummy data
   }
 
-  /// Simulate fetching trains (Replace with API later)
   void loadTrains() {
+    // 🧪 Dummy static data — replace with API later
     trainList.value = [
       Train(
-        number: '20103',
-        name: 'LTT – AMH SF Express',
-        departureTime: '05:23',
-        arrivalTime: '14:10',
+        number: '22538',
+        name: 'Kushinagar Express',
+        departureTime: '00:35',
+        arrivalTime: '07:20',
       ),
       Train(
-        number: '12165',
-        name: 'LTT – GKP SF Express',
-        departureTime: '06:00',
-        arrivalTime: '08:55',
+        number: '11011',
+        name: 'LTT Express',
+        departureTime: '13:00',
+        arrivalTime: '19:30',
       ),
     ];
   }
 
-  /// Handle ticket booking
   void bookTicket(Train train) {
-    // Add your booking logic here
-    Get.snackbar(
-      'Booked!',
-      'Ticket booked for ${train.name}',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.snackbar('Booked!', 'Ticket booked for ${train.name}');
   }
 }

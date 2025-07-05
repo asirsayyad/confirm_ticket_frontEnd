@@ -2,6 +2,8 @@ import 'package:confirmticket/Train_Availability_Screen/train_availability_Contr
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Train_Route/train_route_screen.dart';
+
 class SecondScreen extends StatelessWidget {
   final String from;
   final String to;
@@ -21,16 +23,16 @@ class SecondScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('$from → $to'), // Show route in title
+        title: Text('$from → $to'),
         centerTitle: true,
       ),
       body: Obx(() {
-        // Show loading if train list is empty
+        // 🟡 Show message if no trains
         if (controller.trainList.isEmpty) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: Text('No trains available for this route.'));
         }
 
-        // Show train list
+        // ✅ Show train list
         return ListView.builder(
           itemCount: controller.trainList.length,
           itemBuilder: (context, index) {
@@ -46,9 +48,41 @@ class SecondScreen extends StatelessWidget {
                 subtitle: Text(
                   '${train.departureTime} → ${train.arrivalTime}',
                 ),
-                trailing: ElevatedButton(
-                  onPressed: () => controller.bookTicket(train),
-                  child: const Text('Book'),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.bookTicket(train);
+                      },
+                      child: const Text('Book'),
+                    ),
+                    const SizedBox(width: 8),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     Get.to(() => TrainRouteScreen(
+                    //       trainNumber: train.number,
+                    //       trainName: train.name,
+                    //     ));
+                    //   },
+                    //   child: const Text('Schedule'),
+                    // ),
+                    InkWell(
+                      onTap: () {
+                        Get.to(() => TrainRouteScreen(
+                                  trainNumber: train.number,
+                                  trainName: train.name,
+                                ));
+                      },
+                      child: Text(
+                        "Schedule",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             );
