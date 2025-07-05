@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../login_sceen/login_screen.dart';
+
 /// Simple Train model
 class Train {
   final String number;
@@ -60,5 +62,6 @@ class SecondScreenController extends GetxController {
       'Ticket booked for ${train.name}',
       snackPosition: SnackPosition.BOTTOM,
     );
+    Get.to(LoginScreen());
   }
 }
