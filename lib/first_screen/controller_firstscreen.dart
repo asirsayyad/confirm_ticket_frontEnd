@@ -61,7 +61,11 @@ class Controller_firstscreen extends GetxController {
     } else if (Textfieldfirstfromfirstscreen.text.trim() != null &&
         Textfieldsecondfromfirstscreen.text.trim() != null &&
         rxdate.value != "Select Date") {
-      Get.to(TrainAvailabilityscreen());
+      Get.to(SecondScreen(
+        from: Textfieldfirstfromfirstscreen.text.trim(),
+        to: Textfieldsecondfromfirstscreen.text.trim(),
+      ));
+
     }
   }
 }
