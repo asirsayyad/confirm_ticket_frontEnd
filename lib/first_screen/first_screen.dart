@@ -12,9 +12,8 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Controller_firstscreen controllerfirst = Get.put(Controller_firstscreen());
-    Appbar_Screen appbar_screen=Get.put(Appbar_Screen());
+    Appbar_Screen appbar_screen = Get.put(Appbar_Screen());
     return Scaffold(
       appBar: appbar_screen.appbarmethod(),
       body: Column(
@@ -55,7 +54,6 @@ class FirstScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               controllerfirst.notification();
-
             },
             child: Text("Search"),
           ),

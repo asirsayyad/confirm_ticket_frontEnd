@@ -1,19 +1,21 @@
+import 'package:confirmticket/app_barscreen/appbar_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Appbar_Screen appbar_screen = Get.put(Appbar_Screen());
     return Scaffold(
-      body: Center( // Center aligns the entire column vertically
+      appBar: appbar_screen.appbarmethod(),
+      body: Center(
+        // Center aligns the entire column vertically
         child: Column(
           children: [
             SizedBox(height: 100), // Push content down a bit
-             CircleAvatar(
-              radius: 40,
-              child: Icon(Icons.person, size: 50),
-            ),
+            CircleAvatar(radius: 40, child: Icon(Icons.person, size: 50)),
             SizedBox(height: 20),
 
             ElevatedButton.icon(
