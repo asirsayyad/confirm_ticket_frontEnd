@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "569935459041",
+    "project_id": "loginauth-4b65a",
+    "storage_bucket": "loginauth-4b65a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569935459041:android:028716073b034ae60dbda0",
+        "android_client_info": {
+          "package_name": "com.example.confirmticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8E_b3yd9MCaJ8pxAaXpnbIQPBe_1RgmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

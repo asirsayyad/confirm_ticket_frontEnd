@@ -26,7 +26,8 @@ class Appbar_Screen extends GetxController{
         TextButton.icon(
           //textButton .icon best for app bar button it provid icon and text
           onPressed: () {
-            Get.to(FirstScreen());
+           Get.to(FirstScreen());
+
             // Action when Login is tapped
             debugPrint("Book Ticket tapped");
           },

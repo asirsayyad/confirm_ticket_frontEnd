@@ -8,11 +8,8 @@ class SecondScreen extends StatelessWidget {
   final String from;
   final String to;
 
-  const SecondScreen({
-    Key? key,
-    required this.from,
-    required this.to,
-  }) : super(key: key);
+  const SecondScreen({Key? key, required this.from, required this.to})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +42,7 @@ class SecondScreen extends StatelessWidget {
                   '${train.number} - ${train.name}',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                subtitle: Text(
-                  '${train.departureTime} → ${train.arrivalTime}',
-                ),
+                subtitle: Text('${train.departureTime} → ${train.arrivalTime}'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

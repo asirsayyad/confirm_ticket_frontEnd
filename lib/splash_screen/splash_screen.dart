@@ -9,12 +9,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ControllerSplash controllersplash =Get.put(ControllerSplash());
+    ControllerSplash controllersplash = Get.put(ControllerSplash());
     return Scaffold(
-      
       body: Center(
-        child: Image.network("assets/logo.png", height: 300, // Reduce this value to shrink the image
-            fit: BoxFit.contain),
+        child: Image.network(
+          "assets/logo.png",
+          height: 300, // Reduce this value to shrink the image
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
