@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'schedule_screen/schedule_screen.dart';
 import 'splash_screen/splash_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init(); // This line is important
   runApp(const MyApp());
 }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'controller_new_account.dart';
 
 class CreateNewAccountScreen extends StatelessWidget {
@@ -8,54 +7,73 @@ class CreateNewAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ControllerNewAccount controllerNewAcc =Get.put(ControllerNewAccount());
+    final ControllerNewAccount controllerNewAcc = Get.put(ControllerNewAccount());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Create New Account"),
         centerTitle: true,
-      ),body: Column(children: [
-      SizedBox(height: 10),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 10),
 
-      Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: TextField(
-              controller: controllerNewAcc.textEditingControllernewusername,
-              decoration: InputDecoration(
-                icon: Icon(Icons.person),
-                labelText: "Enter Username",
-
-              ),
-
-               ),
-       ),
-      SizedBox(height: 10),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-              controller:  controllerNewAcc.textEditingControllernewpassword,
-              decoration: InputDecoration(
-                icon: Icon(Icons.password),
-                labelText: "Enter Password",
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: controllerNewAcc.usernameController,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.person),
+                  labelText: "Enter Username",
+                ),
               ),
             ),
-      ),
-      SizedBox(height: 10),
 
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          decoration: InputDecoration(
-            icon: Icon(Icons.password),
-            labelText: "Please Re-Enter Your Password",
-          ),
+            SizedBox(height: 10),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: controllerNewAcc.passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.password),
+                  labelText: "Enter Password",
+                ),
+              ),
+            ),
+
+            SizedBox(height: 10),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.password),
+                  labelText: "Please Re-Enter Your Password",
+                ),
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            Obx(() => ElevatedButton(
+              onPressed: controllerNewAcc.isLoading.value
+                  ? null
+                  : () => controllerNewAcc.handleRegister(context),
+              child: controllerNewAcc.isLoading.value
+                  ? SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+              )
+                  : Text("Create New Account"),
+            )),
+          ],
         ),
       ),
-      SizedBox(height: 10,),
-      ElevatedButton(onPressed: (){}, child:Text("create new account"))
-    ]
-    )
-
-
     );
   }
 }
